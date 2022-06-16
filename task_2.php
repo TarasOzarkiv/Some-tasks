@@ -44,18 +44,63 @@
                                         </div>
                                     </div>
                                     <ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">
+                                        <?php
+                                        /**
+                                         * Copyright © Taras Ozarkiv All rights reserved.
+                                         * 02.06.2022
+                                         */
+
+                                        /**
+                                         * The first version
+                                         */
+                                        $arr = [
+                                            ["Reports", "Analytics", "Export", "Storage"],
+                                        ];
+                                        foreach ($arr as [$a, $b, $c, $d]):
+                                        ?>
                                         <li class="list-group-item">
-                                            <span data-filter-tags="reports file">Reports</span>
+                                            <span data-filter-tags="reports file"><?php echo "$a"; ?></span>
                                         </li>
                                         <li class="list-group-item">
-                                            <span data-filter-tags="analytics graphs">Analytics</span>
+                                            <span data-filter-tags="analytics graphs"><?php echo "$b"; ?></span>
                                         </li>
                                         <li class="list-group-item">
-                                            <span data-filter-tags="export download">Export</span>
+                                            <span data-filter-tags="export download"><?php echo "$c"; ?></span>
                                         </li>
                                         <li class="list-group-item">
-                                            <span data-filter-tags="storage">Storage</span>
+                                            <span data-filter-tags="storage"><?php echo "$d"; ?></span>
                                         </li>
+                                        <?php endforeach;?>
+
+<!--                                        --><?php
+//
+//                                        /**
+//                                        * The second version
+//                                        */
+//
+//                                        $items =[
+//                                                [
+//                                                    "title" => "Reports",
+//                                                    "tags" => "reports file"
+//                                                ],
+//                                                [
+//                                                    "title" => "Analytics",
+//                                                    "tags" => "analytics graphs"
+//                                                ],
+//                                                [
+//                                                    "title" => "Export",
+//                                                    "tags" => "export download"
+//                                                ],
+//                                                [
+//                                                    "title" => "Storage",
+//                                                    "tags" => "storage"
+//                                                ]
+//                                        ];
+//                                        foreach ($items as $item):?>
+<!--                                        <li class="list-group-item">-->
+<!--                                            <span data-filter-tags="--><?php //echo "$item[tags]"; ?><!--">--><?php //echo "$item[title]"; ?><!--</span>-->
+<!--                                        </li>-->
+<!--                                        --><?php //endforeach;?>
                                     </ul>
                                     <div class="filter-message js-filter-message mt-0 fs-sm"></div>
                                 </div>

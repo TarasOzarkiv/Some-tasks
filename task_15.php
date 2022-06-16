@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,18 +35,15 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <div class="alert alert-danger fade show" role="alert">
-                                        Неверный логин или пароль
+                                    <div class="alert alert-info fade show" role="alert">
+                                        Кнопка была нажата: <b><?php echo $_SESSION['numb']; ?></b> раз
                                     </div>
-                                    <form action="">
-                                        <div class="form-group">
-                                        	<label class="form-label" for="simpleinput">Email</label>
-                                        <input type="text" id="simpleinput" class="form-control">
-                                        </div>
 
-                                        <label class="form-label" for="simpleinput">Password</label>
-                                        <input type="password" id="simpleinput" class="form-control">
+                                    <form action="task_15_handler.php" method="post">
                                         <button class="btn btn-success mt-3">Submit</button>
+                                    </form>
+                                    <form action="task_15_unset.php" method="post">
+                                        <button class="btn btn-danger mt-3">Zero</button>
                                     </form>
                                 </div>
                             </div>

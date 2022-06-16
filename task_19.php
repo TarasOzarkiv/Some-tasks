@@ -35,10 +35,10 @@
                             <div class="panel-content">
                                 <div class="panel-content">
                                     <div class="form-group">
-                                        <form action="">
+                                        <form action="" method="post" enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label class="form-label" for="simpleinput">Image</label>
-                                            <input type="file" id="simpleinput" class="form-control">
+                                                <input type="file" id="simpleinput" class="form-control" name="filename">
                                             </div>
                                             <button class="btn btn-success mt-3">Submit</button>
                                         </form>
@@ -63,18 +63,30 @@
                         <div class="panel-container show">
                             <div class="panel-content">
                                 <div class="panel-content image-gallery">
-                                    <div class="row">
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/1.jpg">
-                                        </div>
+                                    <div class="panel-content">
+                                        <?php
+                                        $pdo = new PDO("mysql:host=localhost;dbname=my_project", "root", "");
 
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/2.jpg">
-                                        </div>
+                                        $sqlSellect ="SELECT * FROM images";
+                                        $state = $pdo->prepare($sqlSellect);
+                                        $state->execute();
+                                        $ima = $state->fetchAll(PDO::FETCH_ASSOC);
 
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/3.jpg">
-                                        </div>
+                                        foreach ($ima as $value):
+
+                                            ?>
+                                        <form action="task_19_delete.php" method="get">
+                                            <th scope="row"><?php echo "$value[id]" ?></th>
+                                            <div class="panel-content image-gallery">
+                                                <div class="row">
+                                                    <div class="col-md-3 image">
+                                                        <img src="img/update/<?php echo "$value[image]" ?>"  alt="image">
+                                                        <a class="btn btn-danger" href="task_19_delete.php?del=<?= $value['image'] ?>" >Удалить</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>

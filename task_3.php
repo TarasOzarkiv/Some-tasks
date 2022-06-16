@@ -32,34 +32,51 @@
                     </div>
                     <div class="panel-container show">
                         <div class="panel-content">
+                            <?php
+                            /**
+                             * Copyright © Taras Ozarkiv All rights reserved.
+                             * 02.06.2022
+                             */
+                            $items = [
+                                    [
+                                            "title" => "My Tasks",
+                                            "types" => "130 / 500",
+                                            "width" => "65%",
+                                            "aria_valuenow" => "65",
+                                            "color" => "bg-fusion-400"
+
+                                    ],
+                                [
+                                    "title" => "Transfered",
+                                    "types" => "440 TB",
+                                    "width" => "34%",
+                                    "aria_valuenow" => "34",
+                                    "color" => "bg-success-500"
+                                ],
+                                [
+                                    "title" => "Bugs Squashed",
+                                    "types" => "77%",
+                                    "width" => "77%",
+                                    "aria_valuenow" => "77",
+                                    "color" => "bg-info-400"
+                                ],
+                                [
+                                    "title" => "User Testing",
+                                    "types" => "7 days",
+                                    "width" => "84%",
+                                    "aria_valuenow" => "84",
+                                    "color" => "bg-primary-300"
+                                ],
+                            ];
+                            foreach ($items as $item):?>
                             <div class="d-flex mt-2">
-                                My Tasks
-                                <span class="d-inline-block ml-auto">130 / 500</span>
+                                <?php echo "$item[title]"; ?>
+                                <span class="d-inline-block ml-auto"> <?php echo "$item[types]"; ?></span>
                             </div>
                             <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-fusion-400" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar <?php echo "$item[color]"; ?>" role="progressbar" style="width: <?php echo "$item[width]"; ?>" aria-valuenow="<?php echo "$item[aria_valuenow]"; ?>" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <div class="d-flex">
-                                Transfered
-                                <span class="d-inline-block ml-auto">440 TB</span>
-                            </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-success-500" role="progressbar" style="width: 34%;" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="d-flex">
-                                Bugs Squashed
-                                <span class="d-inline-block ml-auto">77%</span>
-                            </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-info-400" role="progressbar" style="width: 77%;" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="d-flex">
-                                User Testing
-                                <span class="d-inline-block ml-auto">7 days</span>
-                            </div>
-                            <div class="progress progress-sm mb-g">
-                                <div class="progress-bar bg-primary-300" role="progressbar" style="width: 84%;" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>

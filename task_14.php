@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +20,7 @@
     </head>
     <body class="mod-bg-1 mod-nav-link ">
         <main id="js-page-content" role="main" class="page-content">
+
             <div class="col-md-6">
                 <div id="panel-1" class="panel">
                     <div class="panel-hdr">
@@ -34,11 +36,12 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <div class="alert alert-info fade show" role="alert">
-                                        Кнопка была нажата: <b>0</b> раз
-                                    </div>
-                                    <form action="">
-                                        <button class="btn btn-success mt-3">Submit</button>
+
+                                        <div class="alert alert-info"><?php echo "$_SESSION[text]"?></div>
+                                    <form action="task_14_handler.php" method="post">
+                                        <label class="form-label" for="simpleinput">Text</label>
+                                        <input type="text" id="simpleinput" class="form-control" name="text">
+                                        <button class="btn btn-success mt-3" type="submit">Submit</button>
                                     </form>
                                 </div>
                             </div>

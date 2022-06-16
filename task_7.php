@@ -19,7 +19,6 @@
     </head>
     <body class="mod-bg-1 mod-nav-link ">
         <main id="js-page-content" role="main" class="page-content">
-
             <div class="col-md-6">
                 <div id="panel-1" class="panel">
                     <div class="panel-hdr">
@@ -33,16 +32,38 @@
                     </div>
                     <div class="panel-container show">
                         <div class="panel-content">
-                            <div class="panel-content">
-                                <div class="form-group">
-                                    <div class="alert alert-info">Ваше сообщение выводится тут</div>
-                                    <form action="">
-                                        <label class="form-label" for="simpleinput">Text</label>
-                                        <input type="text" id="simpleinput" class="form-control">
-                                        <button class="btn btn-success mt-3">Submit</button>
-                                    </form>
-                                </div>
-                            </div>
+                            <ol class="breadcrumb page-breadcrumb">
+                                <?php
+                                /**
+                                 * Copyright © Taras Ozarkiv All rights reserved.
+                                 * 03.06.2022
+                                 */
+                                $arr = [
+                                        [
+                                              "tab" => "Главная",
+                                              "link" => "#",
+                                              "link_is" => true
+                                        ],
+                                        [
+                                            "tab" => "PHP",
+                                            "link" => "#",
+                                            "link_is" => true
+                                        ],
+                                        [
+                                            "tab" => "Функции",
+                                            "link" => "",
+                                            "link_is" => false
+                                        ]
+                                        ];
+                                foreach ($arr as $item):
+                                    if ($item['link_is']):
+                                ?>
+                                <li class="breadcrumb-item"><a href="<?php echo "$item[link]"?>"><?php echo "$item[tab]"?></a></li>
+                                    <?php else: ?>
+                                    <li class="breadcrumb-item active"><?php echo "$item[tab]"?></li>
+                                <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ol>
                         </div>
                     </div>
                 </div>

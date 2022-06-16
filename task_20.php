@@ -35,10 +35,10 @@
                             <div class="panel-content">
                                 <div class="panel-content">
                                     <div class="form-group">
-                                        <form action="">
+                                        <form action="task_20_save.php" method="post" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <label class="form-label" for="simpleinput">Image</label>
-                                            <input type="file" id="simpleinput" class="form-control">
+                                                <label class="form-label" for="simple input">Image</label>
+                                            <input type="file"  name="image[]" multiple>
                                             </div>
                                             <button class="btn btn-success mt-3">Submit</button>
                                         </form>
@@ -62,23 +62,28 @@
                         </div>
                         <div class="panel-container show">
                             <div class="panel-content">
-                                <div class="panel-content image-gallery">
-                                    <div class="row">
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/1.jpg">
-                                        </div>
+                                <div class="panel-content">
+                                    <?php
+                                    $pdo = new PDO("mysql:host=localhost;dbname=my_project", "root", "");
+                                    $sqlSellect ="SELECT * FROM images";
+                                    $state = $pdo->prepare($sqlSellect);
+                                    $state->execute();
+                                    $ima = $state->fetchAll(PDO::FETCH_ASSOC);
+                                    foreach ($ima as $value):
 
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/2.jpg">
-                                        </div>
+                                        ?>
+                                        <th scope="row"><?php echo "$value[id]" ?></th>
+                                        <div class="panel-content image-gallery">
+                                            <div class="row">
 
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/3.jpg">
+                                                <div class="col-md-3 image">
+                                                    <img src="img/update/<?php echo "$value[image]" ?>"  alt="image">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

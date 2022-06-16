@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,6 @@
     </head>
     <body class="mod-bg-1 mod-nav-link ">
         <main id="js-page-content" role="main" class="page-content">
-
             <div class="col-md-6">
                 <div id="panel-1" class="panel">
                     <div class="panel-hdr">
@@ -35,9 +35,19 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <form action="">
-                                        <label class="form-label" for="simpleinput">Text</label>
-                                        <input type="text" id="simpleinput" class="form-control">
+                                    <?php if(isset($_SESSION['verification'])):?>
+                                    <div class="alert alert-danger fade show" role="alert">
+                                        <?php echo $_SESSION['verification']; ?>
+                                    </div>
+                                    <?php unset($_SESSION['verification']); ?>
+                                    <?php endif;?>
+                                    <form action="task_16_handler.php" method="post">
+                                        <div class="form-group">
+                                            <label class="form-label" for="simpleinput">Email</label>
+                                            <input type="text" name="email" id="simpleinput" class="form-control">
+                                        </div>
+                                        <label class="form-label" for="simpleinput">Password</label>
+                                        <input type="password" name="password" id="simpleinput" class="form-control">
                                         <button class="btn btn-success mt-3">Submit</button>
                                     </form>
                                 </div>

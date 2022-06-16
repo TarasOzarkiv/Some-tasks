@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +34,11 @@
                         </div>
                         <div class="panel-container show">
                             <div class="panel-content">
-                                <div class="panel-content">
                                     <div class="form-group">
-                                        <form action="">
+                                        <form action="task_18_save.php" method="post" enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label class="form-label" for="simpleinput">Image</label>
-                                            <input type="file" id="simpleinput" class="form-control">
+                                            <input type="file" id="simpleinput" class="form-control" name="filename[] " multiple>
                                             </div>
                                             <button class="btn btn-success mt-3">Submit</button>
                                         </form>
@@ -62,22 +62,25 @@
                         </div>
                         <div class="panel-container show">
                             <div class="panel-content">
+                            <?php
+                            $pdo = new PDO("mysql:host=localhost;dbname=my_project", "root", "");
+                            $sqlSellect ="SELECT * FROM images";
+                            $state = $pdo->prepare($sqlSellect);
+                            $state->execute();
+                            $ima = $state->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($ima as $value):
+
+                            ?>
+                                <th scope="row"><?php echo "$value[id]" ?></th>
                                 <div class="panel-content image-gallery">
                                     <div class="row">
+
                                         <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/1.jpg">
-                                            <a class="btn btn-danger" href="#" onclick="confirm('Вы уверены?');">Удалить</a>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <img src="img/demo/gallery/2.jpg">
-                                            <a class="btn btn-danger" onclick="confirm('Вы уверены?');" href="#">Удалить</a>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <img src="img/demo/gallery/3.jpg">
-                                            <a class="btn btn-danger" onclick="confirm('Вы уверены?');" href="#">Удалить</a>
+                                                <img src="img/update/<?php echo "$value[image]" ?>"  alt="image">
                                         </div>
                                     </div>
                                 </div>
+                            <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

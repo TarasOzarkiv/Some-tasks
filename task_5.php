@@ -37,24 +37,43 @@
                                 <p>Сформируйте массив данных и выведите полностью альбом.</p>
                             </div>
                             <div id="js-lightgallery">
-                                <a class="" href="img/demo/gallery/21.jpg">
-                                    <img class="img-responsive" src="img/demo/gallery/thumb/21.jpg" alt="image">
+                                <?php
+                                /**
+                                 * Copyright © Taras Ozarkiv All rights reserved.
+                                 * 02.06.2022
+                                 */
+                                $items = [
+                                        [
+                                                "img" => "img/demo/gallery/21.jpg",
+                                                "image" => "img/demo/gallery/thumb/21.jpg"
+                                        ],
+                                    [
+                                        "img" => "img/demo/gallery/22.jpg",
+                                        "image" => "img/demo/gallery/thumb/22.jpg"
+                                    ],
+                                    [
+                                        "img" => "img/demo/gallery/23.jpg",
+                                        "image" => "img/demo/gallery/thumb/23.jpg"
+                                    ],
+                                    [
+                                        "img" => "img/demo/gallery/24.jpg",
+                                        "image" => "img/demo/gallery/thumb/24.jpg"
+                                    ],
+                                    [
+                                        "img" => "img/demo/gallery/25.jpg",
+                                        "image" => "img/demo/gallery/thumb/25.jpg"
+                                    ],
+                                    [
+                                        "img" => "img/demo/gallery/26.jpg",
+                                        "image" => "img/demo/gallery/thumb/26.jpg"
+                                    ],
+                                ];
+                                foreach ($items as $item):
+                                ?>
+                                <a class="" href="<?php echo "$item[img]"?>">
+                                    <img class="img-responsive" src="<?php echo "$item[image]"?>" alt="image">
                                 </a>
-                                <a class="" href="img/demo/gallery/22.jpg">
-                                    <img class="img-responsive" src="img/demo/gallery/thumb/22.jpg" alt="image">
-                                </a>
-                                <a class="" href="img/demo/gallery/23.jpg">
-                                    <img class="img-responsive" src="img/demo/gallery/thumb/23.jpg" alt="image">
-                                </a>
-                                <a class="" href="img/demo/gallery/24.jpg">
-                                    <img class="img-responsive" src="img/demo/gallery/thumb/24.jpg" alt="image">
-                                </a>
-                                <a class="" href="img/demo/gallery/25.jpg">
-                                    <img class="img-responsive" src="img/demo/gallery/thumb/25.jpg" alt="image">
-                                </a>
-                                <a class="" href="img/demo/gallery/26.jpg">
-                                    <img class="img-responsive" src="img/demo/gallery/thumb/26.jpg" alt="image">
-                                </a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
